@@ -297,6 +297,7 @@ export default {
 <style scoped lang="scss">
 @use "../assets/styles/general.scss" as *;
 
+
 .menu::-webkit-scrollbar {
 
   width: 10px;
@@ -699,4 +700,14 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   max-width: 900px;
-}</style>
+
+}
+
+
+input[type='text'],
+input[type='number'],
+input {
+  font-size: 30px;
+}
+
+</style>
