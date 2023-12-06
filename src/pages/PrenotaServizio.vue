@@ -707,7 +707,7 @@ export default {
 input[type='text'],
 input[type='number'],
 input {
-  font-size: 30px;
+  font-size: 18px;
 }
 
 </style>
