@@ -370,7 +370,7 @@ export default {
     flex-direction: column;
     gap: 1rem;
     padding: 1.5rem;
-
+    font-size: 20px ;
     input {
       background-color: #fe425200;
       border: 2px solid white;
