@@ -278,21 +278,20 @@
       <div class="main-prenota">
 
         <div class="card-wrap"  v-for="item in arrProduct" :key="item.id">
-          <div class="card">
-            <div class="title">{{ item.name }}</div>
           <img src="../assets/img/imgsushi.png" alt="">
           <div class="c-tp">
+            <div class="title">{{ item.name }}</div>
             <div class="tags"> <span>{{fixtag(item.tags) }}</span></div>
             <div class="price">{{ getPrice(item.price) }}</div>
           </div>
-          <div class="add">
-            <div class="sec">
-              <span class="minus"  @click="downCounter(item.id)">-</span>
-              <span class="counter">{{ item.counter }}</span>
-              <span class="plus" @click="upCounter(item.id)" >+</span>
-            </div>
-          <div class="mybtn" @click="addItem(item.name, item.counter, item.price, item.id)">aggiungi</div>
-          </div>
+            <div class="add">
+              <div class="sec">
+                <span class="minus"  @click="downCounter(item.id)">-</span>
+                <span class="counter">{{ item.counter }}</span>
+                <span class="plus" @click="upCounter(item.id)" >+</span>
+              </div>
+            <div class="mybtn" @click="addItem(item.name, item.counter, item.price, item.id)">aggiungi</div>
+
         </div>
         </div>
       
@@ -343,6 +342,7 @@
   width: 100vw;
   margin-top: 230px;
   height: 100%;
+  padding-bottom: 100px;
   .prenota-cont{
     width: 100vw;
     background-color: #270000;
@@ -378,46 +378,13 @@
       margin-top: 7rem;
       @include dfc;
       flex-wrap: wrap;
-      gap: 3rem;
+      gap: 1rem;
       align-items: stretch;
       .card-wrap{
         width: calc((75% - 2rem) / 3);
         margin-bottom: 60px;
         @include dfc;
         align-items: stretch;
-        .add{
-          position: absolute;
-          //background-color: red;
-          bottom: -50px;
-          left: 0;
-          width: 100%;
-          @include dfc;
-          gap: 2rem;
-            .sec{
-              @include dfc;
-              gap: .5rem;
-
-              .plus, .minus{
-                height: 3rem;
-                width: 3rem;
-                @include dfc;
-                border: 2px solid white;
-                border-radius: 50px;
-                font-size: 25px;
-              }
-            }
-            .mybtn{
-              padding: .5rem 2rem;
-              text-transform: uppercase;
-              border: 2px solid white;
-              border-radius: 20px;
-              font-size: 25px;
-            }
-            
-          }
-
-        .card{
-        width: 100%;
         border-radius: 10px;
         padding: 20px;
         position: relative;
@@ -429,34 +396,30 @@
           
           img{
           position: absolute;
-          top: -160px;
+          top: -120px;
           left: 0;
           right: 0;
           margin: auto;
-          width: 300px;
+          min-width: 250px;
           
           }
-          .title{
-          font-size: 20px;
-          width: 100% ;
-          text-transform: upercase;
-          position: absolute;
-          left:45px;
-          top:20px;
-          z-index: 10001;
-          padding-top: 1rem;
-          }
           .c-tp{
-          background-color: #AB2F2F;
-          position: relative;
-          z-index: 10;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          padding: 2rem;
-          border-radius: 20px;
-          justify-content: space-between;
+            background-color: #AB2F2F;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            border-radius: 20px;
+            justify-content: space-between;
+            .title{
+            font-size: 20px;
+            width: 100% ;
+            text-transform: upercase;
+            text-transform: uppercase;
+            z-index: 10001;
+            padding-top: 1rem;
+            }
           
             
             .tags, .price{
@@ -486,7 +449,36 @@
     
             }
           }
-        }
+        
+        .add{
+          margin-top: 2rem;
+          width: 100%;
+          @include dfc;
+          gap: 2rem;
+            .sec{
+              @include dfc;
+              gap: .5rem;
+
+              .plus, .minus{
+                height: 3rem;
+                width: 3rem;
+                @include dfc;
+                border: 2px solid white;
+                border-radius: 50px;
+                font-size: 25px;
+              }
+            }
+            .mybtn{
+              padding: .5rem 2rem;
+              text-transform: uppercase;
+              border: 2px solid white;
+              border-radius: 20px;
+              font-size: 25px;
+            }
+            
+          }
+
+       
 
       }
 
@@ -787,7 +779,7 @@
   }
 
   .card-wrap{
-    width: 55%!important;
+    width: calc((100% - 2rem) / 2)!important;
   }
   
   .bacchette{
@@ -826,7 +818,7 @@
 
 @media (max-width:700px) {
   .card-wrap{
-    width: 95%!important;
+    width: 85%!important;
   }
   h1{
     font-size: 40px!important;
