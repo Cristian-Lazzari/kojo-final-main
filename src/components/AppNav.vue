@@ -50,7 +50,7 @@
       <div class="nav4">
         <div class="left-nav4">
           <img src="../assets/img/puntacsleft.png" alt="">
-          <router-link :to="{ name: 'chi-siamo' }" :class="state.actvPage == 3 ? 'active-link' : '' "  @click="state.updateActvPage(3)" class="chi-siamo" >chi siamo?</router-link>
+          <router-link :to="{ name: 'chi-siamo' }" :class="state.actvPage == 3 ? 'active-link' : '' "  @click="state.updateActvPage(3)" class="chi-siamo" ><span>chi siamo?</span></router-link>
           <img src="../assets/img/puntacsright.png" alt="">
         </div>
         <div class="center-nav4">
@@ -134,6 +134,8 @@
 
 <style lang="scss" scoped>
 @use '../assets/styles/general.scss' as *;
+
+
 
 .nav-link.info{
   .top-info-on{
@@ -408,9 +410,12 @@ height: 0%;
       height: 56px;
       width: 90%;
       margin-bottom: 8px;
+      animation: slidein 1.1s 1 ease-in-out;
       img{
         height: 100%;
       }
+     
+
       .right-nav1{
         background-color: #523333;
         width: 100%;
@@ -422,6 +427,8 @@ height: 0%;
       display: flex;
       height: 48px;
       width: 85%;
+      animation: slidein2 1.3s 1 ease-in-out;
+      
       img{
         height: 100%;
       }
@@ -434,12 +441,15 @@ height: 0%;
         padding: 0 200px 0 100px;
         font-size: 20px;
         text-transform: uppercase;
+        
       }
+      
     }
     .nav3{
       display: flex;
       height: 40px;
       width: 86%;
+      animation: slidein3 1.5s 1 ease-in-out;
       img{
         height: 100%;
       }
@@ -454,6 +464,7 @@ height: 0%;
       display: flex;
       height: 70px;
       width: 85%;
+      animation: slidein4 1.7s 1 ease-in-out;
       img{
         height: 100%;
       }
@@ -494,6 +505,24 @@ height: 0%;
       }
     
     }
+    .nav-link, span{
+        animation: opacityt 1.3s 1 ease-in-out;
+        
+
+      }
+      
+      @keyframes opacityt {
+        0%{
+          opacity: 0;
+        }
+        90%{
+          opacity: 0%;
+        }
+        100%{
+          opacity: 100%;
+        }
+        
+      }
   }
 
   .nav-mb{
@@ -503,22 +532,23 @@ height: 0%;
     background-color: #523333;
     width: 100%;
     height: 140px;
+    animation: slideinm 1 1s ease-in-out;
+    @keyframes slideinm {
+      from{
+        margin-left: 100%;
+        width: 0%;
+      }
+      to{
+        margin-left: 0%;
+        width: 100%;
+
+      }
+    }
 
     .t-mb{
+    background: linear-gradient(60deg, #FFF 50%, #523333 50%);
+    height: 100%;
     width: 30%;
-    height: 140px;
-    background-color: #523333;
-    width: 25%;
-    border-left: 0px solid transparent;
-    border-right: 90px solid transparent;
-    border-bottom: 140px solid white;
-    -moz-transform:rotate(0);
-    -webkit-transform:rotate(0);
-    -ms-transform:rotate(0);
-    -o-transform:rotate(0);
-    transform:rotate(0);
-    position: relative;
-    z-index: 0;
 
     
   }
@@ -531,6 +561,18 @@ height: 0%;
     gap: .7rem;
     align-items: flex-end;
     display: flex;
+    animation: slideinmm 1 1s ease-in-out;
+    @keyframes slideinmm {
+      0%{
+          opacity: 0;
+        }
+        90%{
+          opacity: 0%;
+        }
+        100%{
+          opacity: 100%;
+        }
+    }
     .l1{
       width: 40px;
       height: 5px;
@@ -553,7 +595,50 @@ height: 0%;
   }
 }
 
+@keyframes slidein {
+        from {
+          margin-left: 100%;
+          width: 0%;
+        }
 
+        to {
+          margin-left: 0%;
+          width: 90%;
+        }
+      }
+@keyframes slidein2 {
+        from {
+          margin-left: 100%;
+          width: 0%;
+        }
+
+        to {
+          margin-left: 0%;
+          width:85%;
+        }
+      }
+@keyframes slidein3 {
+        from {
+          margin-left: 100%;
+          width: 0%;
+        }
+
+        to {
+          margin-left: 0%;
+          width: 86%;
+        }
+      }
+@keyframes slidein4 {
+        from {
+          margin-left: 100%;
+          width:0%;
+        }
+
+        to {
+          margin-left: 0%;
+          width: 85%;
+        }
+      }
 .top-on{
   @include dfc;
   height: 100%;
@@ -574,6 +659,7 @@ height: 0%;
   }
 
 }
+
 
 
 @media (max-width: 1500px) {
