@@ -549,7 +549,7 @@ height: 0%;
     background: linear-gradient(60deg, #FFF 50%, #523333 50%);
     height: 100%;
     width: 30%;
-
+    min-width: 80px;
     
   }
   .btn-menu{

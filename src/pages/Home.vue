@@ -102,9 +102,9 @@ export default {
     overflow: auto;
 }
 .home {
-    margin: 0 auto;
-    padding: 5rem;
-    display: flex;
+    
+    padding: 7.1rem 3rem;
+    display: block;
     
 
     .home-left {

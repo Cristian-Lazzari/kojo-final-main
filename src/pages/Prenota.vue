@@ -645,6 +645,13 @@
   bottom: 0;
   z-index: 12000;
   box-shadow: -40px 50px 100px black ;
+  color: $c-nav-link;
+  border: 3px solid white;
+  background-color: #523333;
+  width: 50%;
+  border-radius: 50px;
+  padding: 1.5rem;
+  font-size: 18px;
   .img-cartclose{
     display: flex;
     justify-content: center;
@@ -660,13 +667,7 @@
     
   }
 
-  color: $c-nav-link;
-  border: 3px solid white;
-  background-color: #523333;
-  width: 50%;
-  border-radius: 50px;
-  padding: 1.5rem;
-  font-size: 18px;
+  
   .top-cart{
     padding: .2rem;
     @include dfc;
@@ -771,6 +772,10 @@
 }
 
 @media (max-width:1100px) {
+
+  .cart{
+    width: 80%;
+  }
   .add{
     flex-direction: column;
     gap: 1rem!important;
@@ -830,6 +835,10 @@
   }
 }
 @media (max-width:550px) {
+  .cart{
+    width: 90%;
+    padding: 1rem 0;
+  }
   .prenota-cont{
     overflow-x: hidden!important;
   }
