@@ -120,7 +120,7 @@
             <p>Le delizie del nostro menu aspettano solo te...</p>
           </div>
           <div class="menu-top-right">
-            <div class="one-category" @click="catopen(catinput)" :class="catinput ? 'cat-off': 'cat-on'">
+            <div class="one-category shadow" @click="catopen(catinput)" :class="catinput ? 'cat-off': 'cat-on'">
               <span v-for="(cat,i) in arrCategory" :key="i">{{ namecategory(cat.name, i)}}</span>
             </div>
             <div class="categorie"   :class="catinput ? 'cat-on': 'cat-off'">
@@ -132,10 +132,10 @@
         </div>
         <div class="menu-bottom">
 
-          <div class="card" v-for="item in arrProduct">
+          <div class="card " v-for="item in arrProduct">
             <div class="title">{{ item.name }}</div>
-            <img src="../assets/img/imgsushi.png" alt="">         <!--state.getImageUrl(item.image)-->
-            <div class="c-tp">
+            <img  class="shadow" src="../assets/img/imgsushi.png" alt="">         <!--state.getImageUrl(item.image)-->
+            <div class="c-tp shadow">
               <div class="tags"> <span>{{fixtag(item.tags) }}</span></div>
               <div class="price">{{ getPrice(item.price) }}</div>
             </div>

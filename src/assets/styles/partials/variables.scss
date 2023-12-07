@@ -22,7 +22,9 @@ $h-c: 150px;
 .active-link{
     text-shadow: 0px 0px 15px white;
 }
-
+.shadow{
+    box-shadow: -10px -10px 30px  rgba(0, 0, 0, 0.505) ;
+}
 ///**MIXIN**///
 @mixin dfc {
     display: flex;

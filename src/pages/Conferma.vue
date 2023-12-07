@@ -17,12 +17,14 @@ export default {
       phone: "",
       idate:'',
       timeSlot: "",
+      checkboxtc: 0,
 
       nameError: "",
       phoneError: "",
       timeError: "",
       dateError: "",
       cartError: "",
+      checkboxtcError: "",
 
       isValid: true,
       loading: false,
@@ -31,6 +33,16 @@ export default {
     };
   },
   methods: {
+
+    checkboxtc(){
+      if(this.checkboxtc == 0){
+        this.checkboxtc = 1
+      } else{
+        this.checkboxtc = 0
+      }
+      console.log(this.checkboxtc)
+      
+    },
     getTimesSlots() {
       axios.get(this.state.baseUrl + "api/time").then((response) => {
         this.arrTimesSlotApi = response.data.results;
@@ -82,6 +94,10 @@ export default {
         this.isValid = false;
       }
 
+      // if (!this.checkboxtc) {
+      //   this.checkboxtcError= "Questa casella è obbligatoria";
+      //   this.isValid = false;
+      // }
       if (!this.isValid) {
         return;
       }
@@ -93,7 +109,7 @@ export default {
       this.dateError = "";
       this.timeError = "";
       this.isValid = true;
-      this.order_validations();
+      // this.order_validations();
       console.log(this.timeSlot);
       if (this.isValid) {
         this.loading = true;
@@ -300,13 +316,13 @@ export default {
             <div v-if="timeError" id="timeError">{{ timeError }}</div>
         </div>
         
-        <div class="condizioni">
+        <div class="condizioni" @click="checkboxtc">
           <div class="top">
-            <input type="checkbox">
+            <div :class="checkboxtc ? 'checkboxtc-on' : 'checkboxtc'" ></div>
             <p>Accetta i termini e le condizioni per il trattamento dei dati</p>
-
+            
           </div>
-          <div v-if="nameError" id="nameError">{{ nameError }}</div>
+          <div v-if="checkboxtcError" id="checkboxtcError">{{ checkboxtcError }}</div>
         </div>
         <button v-if="!loading"
         class="btn-send"           
@@ -316,13 +332,15 @@ export default {
       </form>
     </div>
   </div>
-    <div v-if="loading" class="loop cubes">
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
+    <div v-if="loading" class="loader">
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
 
     <Appfooter />
@@ -335,7 +353,20 @@ export default {
 <style scoped lang="scss">
 @use "../assets/styles/general.scss" as *;
 
-
+.checkboxtc{
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 3px solid white;
+}
+.checkboxtc-on{
+  background-color: white;
+  padding: 1px;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 3px solid white;
+}
 .bottom-cart{
   margin-top: 2rem;
   display: flex;
@@ -380,6 +411,7 @@ export default {
 
 @media (max-width:$bp1) {.prenota{ width: 100% !important;}}
 .prenota{
+  padding-bottom: 50px;
   background-color: #270000;
   overflow: hidden;
   display: flex;
@@ -433,6 +465,7 @@ export default {
   flex-direction: column;
   gap: 1rem;
   .sec-form{
+    font-size: 20px ;
   border-radius: 20px;
   width: 90%;
   border: 3px solid white;
@@ -565,7 +598,8 @@ export default {
 #phoneError,
 #timeError,
 #cartError,
-#dateError {
+#dateError,
+#checkboxtcError {
   text-align: center;
   font-size: 1em;
   color: red;
@@ -600,138 +634,77 @@ export default {
   cursor: wait;
 }
 //loader
-.cubes {
+.loader{
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.spinner {
+  width: 70.4px;
+  height: 70.4px;
+  --clr: rgb(247, 197, 159);
+  --clr-alpha: rgb(247, 197, 159,.1);
+  animation: spinner 1.6s infinite ease;
   transform-style: preserve-3d;
 }
 
-.loop {
-  transform: rotateX(-35deg) rotateY(-45deg) translateZ(1.5625em);
+.spinner > div {
+  background-color: var(--clr-alpha);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  border: 3.5px solid var(--clr);
 }
 
-@keyframes s {
-  to {
-    transform: scale3d(0.2, 0.2, 0.2);
+.spinner div:nth-of-type(1) {
+  transform: translateZ(-35.2px) rotateY(180deg);
+}
+
+.spinner div:nth-of-type(2) {
+  transform: rotateY(-270deg) translateX(50%);
+  transform-origin: top right;
+}
+
+.spinner div:nth-of-type(3) {
+  transform: rotateY(270deg) translateX(-50%);
+  transform-origin: center left;
+}
+
+.spinner div:nth-of-type(4) {
+  transform: rotateX(90deg) translateY(-50%);
+  transform-origin: top center;
+}
+
+.spinner div:nth-of-type(5) {
+  transform: rotateX(-90deg) translateY(50%);
+  transform-origin: bottom center;
+}
+
+.spinner div:nth-of-type(6) {
+  transform: translateZ(35.2px);
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+  }
+
+  50% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+  }
+
+  100% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
   }
 }
 
-.item {
-  margin: -1.5625em;
-  width: 3.125em;
-  height: 3.125em;
-  transform-origin: 50% 50% -1.5625em;
-  box-shadow: 0 0 0.125em currentColor;
-  background: currentColor;
-  animation: s 0.6s cubic-bezier(0.45, 0.03, 0.51, 0.95) infinite alternate;
+input[type='text'],
+input[type='number'],
+input {
+  font-size: 14px;
 }
-
-.item:before,
-.item:after {
-  position: absolute;
-  width: inherit;
-  height: inherit;
-  transform-origin: 0 100%;
-  box-shadow: inherit;
-  background: currentColor;
-  content: "";
-}
-
-.item:before {
-  bottom: 100%;
-  transform: rotateX(90deg);
-}
-
-.item:after {
-  left: 100%;
-  transform: rotateY(90deg);
-}
-
-.item:nth-child(1) {
-  margin-top: 6.25em;
-  color: #fe1e52;
-  animation-delay: -1.2s;
-}
-
-.item:nth-child(1):before {
-  color: #ff6488;
-}
-
-.item:nth-child(1):after {
-  color: #ff416d;
-}
-
-.item:nth-child(2) {
-  margin-top: 3.125em;
-  color: #fe4252;
-  animation-delay: -1s;
-}
-
-.item:nth-child(2):before {
-  color: #ff8892;
-}
-
-.item:nth-child(2):after {
-  color: #ff6572;
-}
-
-.item:nth-child(3) {
-  margin-top: 0em;
-  color: #fe6553;
-  animation-delay: -0.8s;
-}
-
-.item:nth-child(3):before {
-  color: #ffa499;
-}
-
-.item:nth-child(3):after {
-  color: #ff8476;
-}
-
-.item:nth-child(4) {
-  margin-top: -3.125em;
-  color: #fe8953;
-  animation-delay: -0.6s;
-}
-
-.item:nth-child(4):before {
-  color: #ffb999;
-}
-
-.item:nth-child(4):after {
-  color: #ffa176;
-}
-
-.item:nth-child(5) {
-  margin-top: -6.25em;
-  color: #feac54;
-  animation-delay: -0.4s;
-}
-
-.item:nth-child(5):before {
-  color: #ffce9a;
-}
-
-.item:nth-child(5):after {
-  color: #ffbd77;
-}
-
-.item:nth-child(6) {
-  margin-top: -9.375em;
-  color: #fed054;
-  animation-delay: -0.2s;
-}
-
-.item:nth-child(6):before {
-  color: #ffe49a;
-}
-
-.item:nth-child(6):after {
-  color: #ffda77;
-}
-
 
 
 </style>

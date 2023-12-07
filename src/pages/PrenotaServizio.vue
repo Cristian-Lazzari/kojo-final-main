@@ -20,12 +20,14 @@ export default {
       timeSlot: "",
       message: "",
       nperson: 0,
+      checkbox: false,
 
       nameError: "",
       phoneError: "",
       timeError: "",
       dateError: "",
       npersonError: "",
+      checkboxError: "",
 
       isValid: true,
       loading: false,
@@ -323,8 +325,15 @@ export default {
   border: 2px solid $c-header;
 
 }
-
+::-webkit-calendar-picker-indicator{
+  color: white;
+  background-color: $c-nav-link;
+  border-radius: 2px;
+  padding: 3px;
+  
+}
 .menu {
+  padding-bottom: 50px;
   overflow: auto;
   width: 100%;
   height: 100%;
@@ -376,7 +385,8 @@ export default {
       border: 2px solid white;
       color: white;
       padding: 1rem;
-      border-radius: .4em
+      border-radius: .4em;
+      
     }
 
     textarea {
@@ -707,7 +717,7 @@ export default {
 input[type='text'],
 input[type='number'],
 input {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 </style>
