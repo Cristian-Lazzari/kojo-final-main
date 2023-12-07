@@ -102,9 +102,9 @@ export default {
     overflow: auto;
 }
 .home {
-    
-    padding: 7.1rem 3rem;
-    display: block;
+    margin: 0 auto;
+    padding: 5rem;
+    display: flex;
     
 
     .home-left {
@@ -163,8 +163,7 @@ export default {
     }
     .home-respo{
         display: block;
-        
-        padding: 1rem 0 15rem 0;
+        padding: 7.1rem 3rem;
         .main{
             display: flex;
             flex-direction: column;
