@@ -28,7 +28,7 @@
             this.state.badge --
           
         }
-        console.log(this.state.badge)
+        
       },
       namecategory(n,i){
         if(this.categoryId==0 && i==0){
@@ -140,7 +140,7 @@
         }
         let check= false;
         let newitem= this.newItem(title, counter, price*counter, price);
-        console.log(newitem);
+       
         this.state.arrCart.forEach((element, index) => {
           if(element.title == title){
             element.counter += counter

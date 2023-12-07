@@ -17,7 +17,7 @@ export default {
       phone: "",
       idate:'',
       timeSlot: "",
-      checkboxtc: 0,
+      checkboxtc: false,
 
       nameError: "",
       phoneError: "",
@@ -34,11 +34,11 @@ export default {
   },
   methods: {
 
-    checkboxtc(){
-      if(this.checkboxtc == 0){
-        this.checkboxtc = 1
+    checkboxtcinput(){
+      if(!this.checkboxtc){
+        this.checkboxtc = true
       } else{
-        this.checkboxtc = 0
+        this.checkboxtc = false
       }
       console.log(this.checkboxtc)
       
@@ -316,9 +316,9 @@ export default {
             <div v-if="timeError" id="timeError">{{ timeError }}</div>
         </div>
         
-        <div class="condizioni" @click="checkboxtc">
-          <div class="top">
-            <div :class="checkboxtc ? 'checkboxtc-on' : 'checkboxtc'" ></div>
+        <div class="condizioni" >
+          <div class="top" @click="checkboxtcinput">
+            <div :class="checkboxtc ? 'checkboxtc-on' : 'checkboxtc'" ><div class="box"></div></div>
             <p>Accetta i termini e le condizioni per il trattamento dei dati</p>
             
           </div>
@@ -360,12 +360,18 @@ export default {
   border: 3px solid white;
 }
 .checkboxtc-on{
-  background-color: white;
-  padding: 1px;
+  @include dfc;
+  
   width: 20px;
   height: 20px;
   border-radius: 3px;
   border: 3px solid white;
+  .box{
+    border-radius: 1px;
+    height: 8px;
+    width: 8px;
+    background-color: rgb(248, 248, 248);
+  }
 }
 .bottom-cart{
   margin-top: 2rem;
