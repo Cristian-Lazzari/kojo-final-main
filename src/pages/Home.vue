@@ -33,7 +33,7 @@ export default {
         <div class="home-left">
             <img src="../assets/img/sushibac.png" alt="" class="sushi">
         </div>
-        <div class="home-right shadow">
+        <div class="home-right ">
             <h1>SCOPRI LA VERA CUCINA ORIENTALE E PROVA IL NOSTRO SUSHI</h1>
             <p>SOLO SUL NOSTRO SITO UFFICIALE PUOI TROVARE IL NOSTRO MENU, PRENOTARE UN TAVOLO O ADDIRITTURA PRENOTARE IL
                 TUO ASPORTO</p>
