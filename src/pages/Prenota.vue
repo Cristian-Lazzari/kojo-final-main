@@ -342,8 +342,8 @@
   width: 100vw;
   margin-top: 230px;
   height: 100%;
-  padding-bottom: 100px;
   .prenota-cont{
+    padding-bottom: 100px;
     width: 100vw;
     background-color: #270000;
     overflow: auto;

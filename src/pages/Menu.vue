@@ -197,6 +197,7 @@
     background-color: #270000;
     width: 100%;
     padding: 1rem 1rem ;
+    padding-bottom: 100px;
     height: 100%;
     overflow-x: hidden;
     .menu-left{
