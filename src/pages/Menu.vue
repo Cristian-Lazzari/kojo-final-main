@@ -197,8 +197,7 @@
     background-color: #270000;
     width: 100%;
     padding: 1rem 1rem ;
-    padding-bottom: 100px;
-    height: 100%;
+    padding-bottom: 250px!important;
     overflow-x: hidden;
     .menu-left{
       width: 10%;
@@ -249,7 +248,6 @@
         justify-content: center;
         margin: 15rem 1rem;
         margin-bottom:0 ;
-        
         
         
         img{
