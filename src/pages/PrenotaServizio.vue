@@ -4,7 +4,7 @@ import axios from "axios";
 import AppLoader from "../components/AppLoader.vue";
 
 export default {
-  components: {AppLoader,},
+  components: { AppLoader,},
 
   data() {
     return {
@@ -121,7 +121,7 @@ export default {
       this.dateError = "";
       this.npersonError = "";
       this.isValid = true;
-      this.order_validations();
+      //this.order_validations();
       console.log(this.timeSlot);
       if (this.isValid) {
         this.loading = true;
@@ -297,7 +297,7 @@ export default {
 
       <!--<span v-if="!loading" @click="sendOrder()" class="btn">Invia</span>-->
     </div>
-    <div v-if="loading" class="loader">
+   <!-- <div v-if="loading" class="loader">
       <div class="spinner">
         <div></div>
         <div></div>
@@ -306,7 +306,7 @@ export default {
         <div></div>
         <div></div>
       </div>
-    </div>
+    </div>-->
 
   </div>
   <AppLoader/>
