@@ -204,7 +204,7 @@
 }
 @media (max-width:1100px){
   .main-about{
-    width: 90%!important;
+    width: 100%!important;
     
   }
   .bacchette{

@@ -94,10 +94,10 @@ export default {
         this.isValid = false;
       }
 
-      // if (!this.checkboxtc) {
-      //   this.checkboxtcError= "Questa casella è obbligatoria";
-      //   this.isValid = false;
-      // }
+       if (!this.checkboxtc) {
+         this.checkboxtcError= "Questa casella è obbligatoria";
+         this.isValid = false;
+       }
       if (!this.isValid) {
         return;
       }
@@ -110,7 +110,7 @@ export default {
       this.timeError = "";
       state.totCart = "0";
       this.isValid = true;
-      // this.order_validations();
+      this.order_validations();
       console.log(this.timeSlot);
       if (this.isValid) {
         this.loading = true;

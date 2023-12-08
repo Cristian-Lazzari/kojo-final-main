@@ -238,6 +238,7 @@
       flex-wrap: wrap;
       gap: 1rem;
       align-items: stretch;
+      padding-bottom: 300px;
       .card{
         border-radius: 10px;
         width: calc((75% - 2rem) / 3);
