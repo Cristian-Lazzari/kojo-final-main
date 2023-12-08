@@ -396,7 +396,7 @@
           
           img{
           position: absolute;
-          top: -120px;
+          top: -130px;
           left: 0;
           right: 0;
           margin: auto;
@@ -409,16 +409,16 @@
             z-index: 10;
             display: flex;
             flex-direction: column;
-            padding: 2rem;
+            padding: 1rem 1.5rem;
+            
             border-radius: 20px;
             justify-content: space-between;
             .title{
             font-size: 20px;
             width: 100% ;
-            text-transform: upercase;
             text-transform: uppercase;
             z-index: 10001;
-            padding-top: 1rem;
+            
             }
           
             
@@ -431,7 +431,7 @@
             }
             .tags{
   
-              display: flex;
+            display: flex;
             padding-top: 1.5rem;
             padding-right: .1rem;
             span{
@@ -446,7 +446,7 @@
               width: 100%;
               //border-radius: 10px ;
               text-align: right;
-    
+              padding-top: 0.5rem;
             }
           }
         

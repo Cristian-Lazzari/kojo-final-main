@@ -108,6 +108,7 @@ export default {
       this.nameError = "";
       this.dateError = "";
       this.timeError = "";
+      state.totCart = "0";
       this.isValid = true;
       // this.order_validations();
       console.log(this.timeSlot);
@@ -464,7 +465,7 @@ export default {
   
 }
 .form{
-  max-width: 450px;
+  max-width: 600px;
   width: 100%;
   margin:  2rem auto;
   @include dfc;
@@ -473,7 +474,7 @@ export default {
   .sec-form{
     font-size: 20px ;
   border-radius: 20px;
-  width: 90%;
+  width: 100%;
   border: 3px solid white;
   background-color: #523333;
   display: flex;

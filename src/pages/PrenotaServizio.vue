@@ -363,7 +363,7 @@ export default {
 
 
 .form {
-  max-width: 450px;
+  max-width: 600px;
   width: 100%;
   margin: 2rem auto;
   @include dfc;
@@ -372,7 +372,7 @@ export default {
 
   .sec-form {
     border-radius: 20px;
-    width: 90%;
+    width: 100%;
     border: 3px solid white;
     background-color: #523333;
     display: flex;
