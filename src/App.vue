@@ -1,11 +1,11 @@
 <script >
   
   import AppNav from './components/AppNav.vue'
- 
+  import AppLoader from './components/AppLoader.vue'
 
 
   export default {
-  components:{  AppNav,  }
+  components:{  AppNav, AppLoader }
   }
 </script>
 
@@ -14,7 +14,7 @@
   <div class="container">
     <AppNav class="appnav"/>
     <router-view class="page"></router-view>
-    
+    <AppLoader />
   </div>
  
 

@@ -37,7 +37,7 @@ export default {
             <h1>SCOPRI LA VERA CUCINA ORIENTALE E PROVA IL NOSTRO SUSHI</h1>
             <p>SOLO SUL NOSTRO SITO UFFICIALE PUOI TROVARE IL NOSTRO MENU, PRENOTARE UN TAVOLO O ADDIRITTURA PRENOTARE IL
                 TUO ASPORTO</p>
-            <router-link :to="{ name: 'menu' }" class="btn">Menu</router-link>
+            <router-link :to="{ name: 'menu' }" class="btn shadow">Menu</router-link>
 
         </div>
     </div>

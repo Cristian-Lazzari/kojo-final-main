@@ -133,9 +133,9 @@
         <div class="menu-bottom">
 
           <div class="card " v-for="item in arrProduct">
-            <div class="title">{{ item.name }}</div>
             <img  class="shadow" src="../assets/img/imgsushi.png" alt="">         <!--state.getImageUrl(item.image)-->
             <div class="c-tp shadow">
+              <div class="title">{{ item.name }}</div>
               <div class="tags"> <span>{{fixtag(item.tags) }}</span></div>
               <div class="price">{{ getPrice(item.price) }}</div>
             </div>
@@ -188,7 +188,7 @@
   top: 0;
   left: 0;
   flex-wrap: wrap;
-  height: 100%;
+  height: 100vh;
   margin-top: 230px;
   
   .menu-cont{
@@ -238,6 +238,7 @@
       flex-wrap: wrap;
       gap: 1rem;
       align-items: stretch;
+      padding-bottom: 300px;
       .card{
         border-radius: 10px;
         width: calc((75% - 2rem) / 3);
@@ -252,41 +253,35 @@
         
         img{
           position: absolute;
-          top: -175px;
+          top: -130px;
           left: 0;
           right: 0;
           margin: auto;
-          width: 300px;
+          width: 250px;
           
           
         }
         .title{
           font-size: 20px;
           width: 100% ;
-          text-transform: upercase;
-          position: absolute;
-          left:40px;
-          top:20px;
+          text-transform: uppercase;
           z-index: 10001;
+          
+          
         }
         .c-tp{
           background-color: #AB2F2F;
           position: relative;
           z-index: 10000;
-          width: 100%;
-          height: 100%;
           display: flex;
           flex-direction: column;
-          padding: 2rem;
+          padding: 1rem 1.5rem;
           border-radius: 20px;
           justify-content: space-between;
-          
-          
-          
+
           .tags, .price{
             border-radius: 10px;
             width: 100%;
-            padding-right: .5rem;
             padding-bottom: .5rem;
           }
           .tags{
@@ -306,7 +301,7 @@
             width: 100%;
             //border-radius: 10px ;
             text-align: right;
-  
+            padding-top: 0.5rem;
           }
         }
       }
@@ -444,7 +439,7 @@
     width:100%;
   }
 }
-@media (max-width:1650px) {
+@media (max-width:1600px) {
   .card{
     width: calc((75% - 2rem) / 2)!important;
   }
@@ -457,6 +452,9 @@
 }
 @media (max-width:1100px) {
   
+  .card{
+    width: calc((100% - 2rem) / 2)!important;
+  }
   .menu-cont{
     padding-top: 0!important;
   }

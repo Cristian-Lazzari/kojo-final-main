@@ -1,10 +1,10 @@
 <script>
 import { state } from "../state.js";
 import axios from "axios";
-
+import AppLoader from "../components/AppLoader.vue";
 
 export default {
-  components: {},
+  components: { AppLoader,},
 
   data() {
     return {
@@ -20,14 +20,14 @@ export default {
       timeSlot: "",
       message: "",
       nperson: 0,
-      checkbox: false,
+      checkboxtc: false,
 
       nameError: "",
       phoneError: "",
       timeError: "",
       dateError: "",
       npersonError: "",
-      checkboxError: "",
+      checkboxtcError: "",
 
       isValid: true,
       loading: false,
@@ -36,6 +36,15 @@ export default {
     };
   },
   methods: {
+    checkboxtcinput(){
+      if(!this.checkboxtc){
+        this.checkboxtc = true
+      } else{
+        this.checkboxtc = false
+      }
+      console.log(this.checkboxtc)
+      
+    },
     getTimesSlots() {
       axios.get(this.state.baseUrl + "api/slot").then((response) => {
         this.arrTimesSlotApi = response.data.results;
@@ -95,6 +104,11 @@ export default {
         this.isValid = false;
       }
 
+      if (!this.checkboxtc) {
+         this.checkboxtcError= "Questa casella è obbligatoria";
+         this.isValid = false;
+       }
+
       if (!this.isValid) {
         return;
       }
@@ -107,7 +121,7 @@ export default {
       this.dateError = "";
       this.npersonError = "";
       this.isValid = true;
-      this.order_validations();
+      //this.order_validations();
       console.log(this.timeSlot);
       if (this.isValid) {
         this.loading = true;
@@ -271,33 +285,56 @@ export default {
         <span>Lascia una nota per il ristorante</span>
         <textarea cols="30" rows="10" v-model="message"></textarea>
       </div>
-      <div class="condizioni">
-        <div class="top">
-          <input type="checkbox">
-          <p>Accetta i termini e le condizioni per il trattamento dei dati</p>
-
+      <div class="condizioni" >
+          <div class="top" @click="checkboxtcinput">
+            <div :class="checkboxtc ? 'checkboxtc-on' : 'checkboxtc'" ><div class="box"></div></div>
+            <p>Accetta i termini e le condizioni per il trattamento dei dati</p>
+            
+          </div>
+          <div v-if="checkboxtcError" id="checkboxtcError">{{ checkboxtcError }}</div>
         </div>
-        <div v-if="nameError" id="nameError">{{ nameError }}</div>
-      </div>
-
       <button v-if="!loading" class="btn-send" @click.prevent="sendOrder" data-action='submit'>conferma</button>
 
       <!--<span v-if="!loading" @click="sendOrder()" class="btn">Invia</span>-->
     </div>
-    <div v-if="loading" class="loop cubes">
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
-      <div class="item cubes"></div>
-    </div>
-    <Appfooter />
+   <!-- <div v-if="loading" class="loader">
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>-->
+
   </div>
+  <AppLoader/>
 </template>
 
 <style scoped lang="scss">
 @use "../assets/styles/general.scss" as *;
+
+.checkboxtc{
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 3px solid white;
+}
+.checkboxtc-on{
+  @include dfc;
+  
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 3px solid white;
+  .box{
+    border-radius: 1px;
+    height: 8px;
+    width: 8px;
+    background-color: rgb(248, 248, 248);
+  }
+}
 
 
 .menu::-webkit-scrollbar {
@@ -363,7 +400,7 @@ export default {
 
 
 .form {
-  max-width: 450px;
+  max-width: 600px;
   width: 100%;
   margin: 2rem auto;
   @include dfc;
@@ -372,7 +409,7 @@ export default {
 
   .sec-form {
     border-radius: 20px;
-    width: 90%;
+    width: 100%;
     border: 3px solid white;
     background-color: #523333;
     display: flex;
@@ -467,9 +504,10 @@ export default {
 #timeError,
 #dateError,
 #timeError,
-#npersonError {
+#npersonError,
+#checkboxtcError {
   text-align: center;
-  font-size: 0.8em;
+  font-size: 1em;
   color: red;
   margin-top: 0.3rem;
 }
@@ -540,6 +578,16 @@ export default {
   transition: all linear 0.3s;
 }
 
+.condizioni{
+  font-size: 15px;
+  margin: 10px;
+  .top{
+    display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  }
+}
 .icon-cart {
   margin: 1rem;
 }
